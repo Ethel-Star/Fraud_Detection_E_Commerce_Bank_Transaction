@@ -96,12 +96,18 @@ def check_duplicates(fraud_data, creditcard_data, ip_to_country):
 
     return datasets["Fraud Data"], datasets["Credit Card Data"], datasets["IP to Country Data"]
 
+import logging
+import plotly.graph_objects as go
+
+
+
 def plot_target_class_distribution(fraud_data, creditcard_data):
     """
-    Plot the distribution of the target variable ('class' or 'Class') for Fraud and Credit Card datasets and log the outputs.
+    Plot the distribution of the target variable ('class' or 'Class') for Fraud and Credit Card datasets
+    and log the outputs. Save the plot as an image file.
     """
     logging.info("Plotting target class distribution...")
-    
+
     # Group by target variable 'class' in Fraud_Data
     fraud_class_counts = fraud_data['class'].value_counts()
     fraud_class_percentage = fraud_data['class'].value_counts(normalize=True) * 100
@@ -121,55 +127,40 @@ def plot_target_class_distribution(fraud_data, creditcard_data):
     print("\nCreditCard Class Distribution Percentage:")
     print(creditcard_class_percentage)
 
+    # Logging counts and percentages
     logging.info(f"Fraud_Data Class Distribution Count:\n{fraud_class_counts}")
     logging.info(f"Fraud_Data Class Distribution Percentage:\n{fraud_class_percentage}")
     logging.info(f"CreditCard Class Distribution Count:\n{creditcard_class_counts}")
     logging.info(f"CreditCard Class Distribution Percentage:\n{creditcard_class_percentage}")
 
-    # Create 3D Pie Charts using Plotly
-    fig = make_subplots(rows=1, cols=2, specs=[[{'type': 'domain'}, {'type': 'domain'}]], 
-                        subplot_titles=("Fraud_Data Target Class Distribution", "CreditCard Target Class Distribution"))
+    # Create 2D Pie Charts using Matplotlib
+    fig, axs = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Fraud Data 3D Pie Chart
-    fig.add_trace(go.Pie(
-        labels=['Non-Fraudulent (0)', 'Fraudulent (1)'],
-        values=fraud_class_counts,
-        hole=0.4,
-        pull=[0, 0.1],  # Pull out the "Fraudulent" slice
-        marker=dict(colors=['#66b3ff', '#ff6666']),
-        textinfo='percent+label',
-        hoverinfo='label+percent',
-        name="Fraud_Data"
-    ), 1, 1)
+    # Plot for Fraud Data
+    axs[0].pie(fraud_class_counts, labels=['Non-Fraudulent (0)', 'Fraudulent (1)'],
+               autopct='%1.1f%%', startangle=140, colors=['#66b3ff', '#ff6666'], explode=(0.1, 0))
+    axs[0].set_title("Fraud_Data Target Class Distribution")
 
-    # Credit Card 3D Pie Chart
-    fig.add_trace(go.Pie(
-        labels=['Non-Fraudulent (0)', 'Fraudulent (1)'],
-        values=creditcard_class_counts,
-        hole=0.4,
-        pull=[0, 0.1],  # Pull out the "Fraudulent" slice
-        marker=dict(colors=['#66b3ff', '#ff6666']),
-        textinfo='percent+label',
-        hoverinfo='label+percent',
-        name="CreditCard"
-    ), 1, 2)
+    # Plot for Credit Card Data
+    axs[1].pie(creditcard_class_counts, labels=['Non-Fraudulent (0)', 'Fraudulent (1)'],
+               autopct='%1.1f%%', startangle=140, colors=['#66b3ff', '#ff6666'], explode=(0.1, 0))
+    axs[1].set_title("CreditCard Target Class Distribution")
 
-    # Update layout for 3D effect and annotations
-    fig.update_layout(
-        title_text="Target Class Distribution in Fraud_Data and CreditCard Datasets",
-        title_font_size=20,
-        title_x=0.5,
-        annotations=[dict(text='Fraud_Data', x=0.18, y=0.5, font_size=14, showarrow=False),
-                     dict(text='CreditCard', x=0.82, y=0.5, font_size=14, showarrow=False)],
-        showlegend=False
-    )
+    # Set equal aspect ratio to ensure the pie charts are circular
+    for ax in axs:
+        ax.axis('equal')
 
-    # Add 3D effect
-    fig.update_traces(hoverlabel=dict(bgcolor="white", font_size=12, font_family="Arial"),
-                      textfont=dict(size=14, family="Arial"))
+    # Save the plot as an image file
+    output_dir = "plots"
+    os.makedirs(output_dir, exist_ok=True)
+    plot_filename = os.path.join(output_dir, "target_class_distribution_plot.png")
+    plt.savefig(plot_filename)
+    logging.info(f"2D plot saved as {plot_filename}")
 
-    # Show the interactive 3D pie charts
-    fig.show()
+    # Show the interactive 2D pie charts
+    plt.show()
+
+
 
 def process_data(fraud_data, creditcard_data, ip_to_country):
     """
