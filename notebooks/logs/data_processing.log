@@ -1,131 +1,17 @@
-2025-02-06 21:19:06,459 - INFO - Starting data processing pipeline.
-2025-02-06 21:19:06,460 - INFO - Displaying first few rows of each dataset.
-2025-02-06 21:19:06,466 - INFO - Fraud Data Head:
-   user_id          signup_time        purchase_time  purchase_value  \
-0    22058  2015-02-24 22:55:49  2015-04-18 02:47:11              34   
-1   333320  2015-06-07 20:39:50  2015-06-08 01:38:54              16   
-2     1359  2015-01-01 18:52:44  2015-01-01 18:52:45              15   
-3   150084  2015-04-28 21:13:25  2015-05-04 13:54:50              44   
-4   221365  2015-07-21 07:09:52  2015-09-09 18:40:53              39   
-
-       device_id source browser sex  age    ip_address  class  
-0  QVPSPJUOCKZAR    SEO  Chrome   M   39  7.327584e+08      0  
-1  EOGFQPIZPYXFZ    Ads  Chrome   F   53  3.503114e+08      0  
-2  YSSKYOSJHPPLJ    SEO   Opera   M   53  2.621474e+09      1  
-3  ATGTXKYKUDUQN    SEO  Safari   M   41  3.840542e+09      0  
-4  NAUITBZFJKHWW    Ads  Safari   M   45  4.155831e+08      0  
-2025-02-06 21:19:06,479 - INFO - Credit Card Data Head:
-   Time        V1        V2        V3        V4        V5        V6        V7  \
-0   0.0 -1.359807 -0.072781  2.536347  1.378155 -0.338321  0.462388  0.239599   
-1   0.0  1.191857  0.266151  0.166480  0.448154  0.060018 -0.082361 -0.078803   
-2   1.0 -1.358354 -1.340163  1.773209  0.379780 -0.503198  1.800499  0.791461   
-3   1.0 -0.966272 -0.185226  1.792993 -0.863291 -0.010309  1.247203  0.237609   
-4   2.0 -1.158233  0.877737  1.548718  0.403034 -0.407193  0.095921  0.592941   
-
-         V8        V9  ...       V21       V22       V23       V24       V25  \
-0  0.098698  0.363787  ... -0.018307  0.277838 -0.110474  0.066928  0.128539   
-1  0.085102 -0.255425  ... -0.225775 -0.638672  0.101288 -0.339846  0.167170   
-2  0.247676 -1.514654  ...  0.247998  0.771679  0.909412 -0.689281 -0.327642   
-3  0.377436 -1.387024  ... -0.108300  0.005274 -0.190321 -1.175575  0.647376   
-4 -0.270533  0.817739  ... -0.009431  0.798278 -0.137458  0.141267 -0.206010   
-
-        V26       V27       V28  Amount  Class  
-0 -0.189115  0.133558 -0.021053  149.62      0  
-1  0.125895 -0.008983  0.014724    2.69      0  
-2 -0.139097 -0.055353 -0.059752  378.66      0  
-3 -0.221929  0.062723  0.061458  123.50      0  
-4  0.502292  0.219422  0.215153   69.99      0  
-
-[5 rows x 31 columns]
-2025-02-06 21:19:06,481 - INFO - IP to Country Data Head:
-   lower_bound_ip_address  upper_bound_ip_address    country
-0              16777216.0                16777471  Australia
-1              16777472.0                16777727      China
-2              16777728.0                16778239      China
-3              16778240.0                16779263  Australia
-4              16779264.0                16781311      China
-2025-02-06 21:19:06,481 - INFO - Generating descriptive statistics for datasets.
-2025-02-06 21:19:07,205 - INFO - Fraud Data Describe:
-             user_id  purchase_value            age    ip_address  \
-count  151112.000000   151112.000000  151112.000000  1.511120e+05   
-mean   200171.040970       36.935372      33.140704  2.152145e+09   
-std    115369.285024       18.322762       8.617733  1.248497e+09   
-min         2.000000        9.000000      18.000000  5.209350e+04   
-25%    100642.500000       22.000000      27.000000  1.085934e+09   
-50%    199958.000000       35.000000      33.000000  2.154770e+09   
-75%    300054.000000       49.000000      39.000000  3.243258e+09   
-max    400000.000000      154.000000      76.000000  4.294850e+09   
-
-               class  
-count  151112.000000  
-mean        0.093646  
-std         0.291336  
-min         0.000000  
-25%         0.000000  
-50%         0.000000  
-75%         0.000000  
-max         1.000000  
-2025-02-06 21:19:07,216 - INFO - Credit Card Data Describe:
-                Time            V1            V2            V3            V4  \
-count  284807.000000  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05   
-mean    94813.859575  1.168375e-15  3.416908e-16 -1.379537e-15  2.074095e-15   
-std     47488.145955  1.958696e+00  1.651309e+00  1.516255e+00  1.415869e+00   
-min         0.000000 -5.640751e+01 -7.271573e+01 -4.832559e+01 -5.683171e+00   
-25%     54201.500000 -9.203734e-01 -5.985499e-01 -8.903648e-01 -8.486401e-01   
-50%     84692.000000  1.810880e-02  6.548556e-02  1.798463e-01 -1.984653e-02   
-75%    139320.500000  1.315642e+00  8.037239e-01  1.027196e+00  7.433413e-01   
-max    172792.000000  2.454930e+00  2.205773e+01  9.382558e+00  1.687534e+01   
-
-                 V5            V6            V7            V8            V9  \
-count  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05   
-mean   9.604066e-16  1.487313e-15 -5.556467e-16  1.213481e-16 -2.406331e-15   
-std    1.380247e+00  1.332271e+00  1.237094e+00  1.194353e+00  1.098632e+00   
-min   -1.137433e+02 -2.616051e+01 -4.355724e+01 -7.321672e+01 -1.343407e+01   
-25%   -6.915971e-01 -7.682956e-01 -5.540759e-01 -2.086297e-01 -6.430976e-01   
-50%   -5.433583e-02 -2.741871e-01  4.010308e-02  2.235804e-02 -5.142873e-02   
-75%    6.119264e-01  3.985649e-01  5.704361e-01  3.273459e-01  5.971390e-01   
-max    3.480167e+01  7.330163e+01  1.205895e+02  2.000721e+01  1.559499e+01   
-
-       ...           V21           V22           V23           V24  \
-count  ...  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05   
-mean   ...  1.654067e-16 -3.568593e-16  2.578648e-16  4.473266e-15   
-std    ...  7.345240e-01  7.257016e-01  6.244603e-01  6.056471e-01   
-min    ... -3.483038e+01 -1.093314e+01 -4.480774e+01 -2.836627e+00   
-25%    ... -2.283949e-01 -5.423504e-01 -1.618463e-01 -3.545861e-01   
-50%    ... -2.945017e-02  6.781943e-03 -1.119293e-02  4.097606e-02   
-75%    ...  1.863772e-01  5.285536e-01  1.476421e-01  4.395266e-01   
-max    ...  2.720284e+01  1.050309e+01  2.252841e+01  4.584549e+00   
-
-                V25           V26           V27           V28         Amount  \
-count  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05  284807.000000   
-mean   5.340915e-16  1.683437e-15 -3.660091e-16 -1.227390e-16      88.349619   
-std    5.212781e-01  4.822270e-01  4.036325e-01  3.300833e-01     250.120109   
-min   -1.029540e+01 -2.604551e+00 -2.256568e+01 -1.543008e+01       0.000000   
-25%   -3.171451e-01 -3.269839e-01 -7.083953e-02 -5.295979e-02       5.600000   
-50%    1.659350e-02 -5.213911e-02  1.342146e-03  1.124383e-02      22.000000   
-75%    3.507156e-01  2.409522e-01  9.104512e-02  7.827995e-02      77.165000   
-max    7.519589e+00  3.517346e+00  3.161220e+01  3.384781e+01   25691.160000   
-
-               Class  
-count  284807.000000  
-mean        0.001727  
-std         0.041527  
-min         0.000000  
-25%         0.000000  
-50%         0.000000  
-75%         0.000000  
-max         1.000000  
-
-[8 rows x 31 columns]
-2025-02-06 21:19:07,216 - INFO - Dataset shapes: {'Fraud Data Shape': (151112, 11), 'Credit Card Data Shape': (284807, 31), 'IP to Country Data Shape': (138846, 3)}
-2025-02-06 21:19:07,216 - INFO - Displaying dataset info.
-2025-02-06 21:19:07,352 - INFO - Fraud Data Info:
-None
-2025-02-06 21:19:07,352 - INFO - Credit Card Data Info:
-None
-2025-02-06 21:19:07,352 - INFO - IP to Country Data Info:
-None
-2025-02-06 21:19:07,468 - INFO - Missing values in Fraud Data: 
+2025-02-06 22:37:13,683 - INFO - Starting data processing...
+2025-02-06 22:37:13,684 - INFO - Displaying dataset shapes...
+2025-02-06 22:37:13,684 - INFO - Fraud Data Shape: (151112, 11)
+2025-02-06 22:37:13,684 - INFO - Credit Card Data Shape: (284807, 31)
+2025-02-06 22:37:13,684 - INFO - IP to Country Data Shape: (138846, 3)
+2025-02-06 22:37:13,684 - INFO - Displaying dataset info...
+2025-02-06 22:37:13,827 - INFO - Fraud Data Info:
+2025-02-06 22:37:13,910 - INFO - None
+2025-02-06 22:37:13,910 - INFO - Credit Card Data Info:
+2025-02-06 22:37:13,958 - INFO - None
+2025-02-06 22:37:13,958 - INFO - IP to Country Data Info:
+2025-02-06 22:37:13,969 - INFO - None
+2025-02-06 22:37:13,969 - INFO - Checking for missing values...
+2025-02-06 22:37:14,094 - INFO - Missing Values in Fraud Data:
 user_id           0
 signup_time       0
 purchase_time     0
@@ -138,7 +24,7 @@ age               0
 ip_address        0
 class             0
 dtype: int64
-2025-02-06 21:19:07,469 - INFO - Missing values in Credit Card Data: 
+2025-02-06 22:37:14,095 - INFO - Missing Values in Credit Card Data:
 Time      0
 V1        0
 V2        0
@@ -171,236 +57,63 @@ V28       0
 Amount    0
 Class     0
 dtype: int64
-2025-02-06 21:19:07,469 - INFO - Missing values in IP to Country Data: 
+2025-02-06 22:37:14,095 - INFO - Missing Values in IP to Country Data:
 lower_bound_ip_address    0
 upper_bound_ip_address    0
 country                   0
 dtype: int64
-2025-02-06 21:19:07,873 - INFO - Fraud Data: Found 0 duplicate rows.
-2025-02-06 21:19:09,669 - INFO - Credit Card Data: Found 1081 duplicate rows.
-2025-02-06 21:19:11,380 - INFO - Credit Card Data: Duplicates removed successfully.
-2025-02-06 21:19:11,438 - INFO - IP to Country Data: Found 0 duplicate rows.
-2025-02-06 21:19:11,624 - INFO - Fraud_Data Class Distribution Count:
+2025-02-06 22:37:14,434 - INFO - Checking for duplicates in Fraud Data...
+2025-02-06 22:37:14,434 - INFO - No duplicates found in Fraud Data.
+2025-02-06 22:37:16,389 - INFO - Checking for duplicates in Credit Card Data...
+2025-02-06 22:37:18,453 - INFO - Found 1081 duplicates in Credit Card Data. Removing them.
+2025-02-06 22:37:18,514 - INFO - Checking for duplicates in IP to Country Data...
+2025-02-06 22:37:18,514 - INFO - No duplicates found in IP to Country Data.
+2025-02-06 22:37:18,524 - INFO - Plotting target class distribution...
+2025-02-06 22:37:18,545 - INFO - Fraud_Data Class Distribution Count:
 class
 0    136961
 1     14151
 Name: count, dtype: int64
-2025-02-06 21:19:11,624 - INFO - Fraud_Data Class Distribution Percentage:
+2025-02-06 22:37:18,545 - INFO - Fraud_Data Class Distribution Percentage:
 class
 0    90.635423
 1     9.364577
 Name: proportion, dtype: float64
-2025-02-06 21:19:11,625 - INFO - CreditCard Class Distribution Count:
+2025-02-06 22:37:18,546 - INFO - CreditCard Class Distribution Count:
 Class
-0    283253
-1       473
+0    284315
+1       492
 Name: count, dtype: int64
-2025-02-06 21:19:11,625 - INFO - CreditCard Class Distribution Percentage:
+2025-02-06 22:37:18,546 - INFO - CreditCard Class Distribution Percentage:
 Class
-0    99.83329
-1     0.16671
+0    99.827251
+1     0.172749
 Name: proportion, dtype: float64
-2025-02-06 21:19:24,077 - INFO - Data processing completed.
-2025-02-06 21:20:26,014 - INFO - Starting data processing pipeline.
-2025-02-06 21:20:26,014 - INFO - Displaying first few rows of each dataset.
-2025-02-06 21:20:26,018 - INFO - Fraud Data Head:
-   user_id          signup_time        purchase_time  purchase_value  \
-0    22058  2015-02-24 22:55:49  2015-04-18 02:47:11              34   
-1   333320  2015-06-07 20:39:50  2015-06-08 01:38:54              16   
-2     1359  2015-01-01 18:52:44  2015-01-01 18:52:45              15   
-3   150084  2015-04-28 21:13:25  2015-05-04 13:54:50              44   
-4   221365  2015-07-21 07:09:52  2015-09-09 18:40:53              39   
-
-       device_id source browser sex  age    ip_address  class  
-0  QVPSPJUOCKZAR    SEO  Chrome   M   39  7.327584e+08      0  
-1  EOGFQPIZPYXFZ    Ads  Chrome   F   53  3.503114e+08      0  
-2  YSSKYOSJHPPLJ    SEO   Opera   M   53  2.621474e+09      1  
-3  ATGTXKYKUDUQN    SEO  Safari   M   41  3.840542e+09      0  
-4  NAUITBZFJKHWW    Ads  Safari   M   45  4.155831e+08      0  
-2025-02-06 21:20:26,027 - INFO - Credit Card Data Head:
-   Time        V1        V2        V3        V4        V5        V6        V7  \
-0   0.0 -1.359807 -0.072781  2.536347  1.378155 -0.338321  0.462388  0.239599   
-1   0.0  1.191857  0.266151  0.166480  0.448154  0.060018 -0.082361 -0.078803   
-2   1.0 -1.358354 -1.340163  1.773209  0.379780 -0.503198  1.800499  0.791461   
-3   1.0 -0.966272 -0.185226  1.792993 -0.863291 -0.010309  1.247203  0.237609   
-4   2.0 -1.158233  0.877737  1.548718  0.403034 -0.407193  0.095921  0.592941   
-
-         V8        V9  ...       V21       V22       V23       V24       V25  \
-0  0.098698  0.363787  ... -0.018307  0.277838 -0.110474  0.066928  0.128539   
-1  0.085102 -0.255425  ... -0.225775 -0.638672  0.101288 -0.339846  0.167170   
-2  0.247676 -1.514654  ...  0.247998  0.771679  0.909412 -0.689281 -0.327642   
-3  0.377436 -1.387024  ... -0.108300  0.005274 -0.190321 -1.175575  0.647376   
-4 -0.270533  0.817739  ... -0.009431  0.798278 -0.137458  0.141267 -0.206010   
-
-        V26       V27       V28  Amount  Class  
-0 -0.189115  0.133558 -0.021053  149.62      0  
-1  0.125895 -0.008983  0.014724    2.69      0  
-2 -0.139097 -0.055353 -0.059752  378.66      0  
-3 -0.221929  0.062723  0.061458  123.50      0  
-4  0.502292  0.219422  0.215153   69.99      0  
-
-[5 rows x 31 columns]
-2025-02-06 21:20:26,030 - INFO - IP to Country Data Head:
-   lower_bound_ip_address  upper_bound_ip_address    country
-0              16777216.0                16777471  Australia
-1              16777472.0                16777727      China
-2              16777728.0                16778239      China
-3              16778240.0                16779263  Australia
-4              16779264.0                16781311      China
-2025-02-06 21:20:26,030 - INFO - Generating descriptive statistics for datasets.
-2025-02-06 21:20:26,814 - INFO - Fraud Data Describe:
-             user_id  purchase_value            age    ip_address  \
-count  151112.000000   151112.000000  151112.000000  1.511120e+05   
-mean   200171.040970       36.935372      33.140704  2.152145e+09   
-std    115369.285024       18.322762       8.617733  1.248497e+09   
-min         2.000000        9.000000      18.000000  5.209350e+04   
-25%    100642.500000       22.000000      27.000000  1.085934e+09   
-50%    199958.000000       35.000000      33.000000  2.154770e+09   
-75%    300054.000000       49.000000      39.000000  3.243258e+09   
-max    400000.000000      154.000000      76.000000  4.294850e+09   
-
-               class  
-count  151112.000000  
-mean        0.093646  
-std         0.291336  
-min         0.000000  
-25%         0.000000  
-50%         0.000000  
-75%         0.000000  
-max         1.000000  
-2025-02-06 21:20:26,824 - INFO - Credit Card Data Describe:
-                Time            V1            V2            V3            V4  \
-count  284807.000000  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05   
-mean    94813.859575  1.168375e-15  3.416908e-16 -1.379537e-15  2.074095e-15   
-std     47488.145955  1.958696e+00  1.651309e+00  1.516255e+00  1.415869e+00   
-min         0.000000 -5.640751e+01 -7.271573e+01 -4.832559e+01 -5.683171e+00   
-25%     54201.500000 -9.203734e-01 -5.985499e-01 -8.903648e-01 -8.486401e-01   
-50%     84692.000000  1.810880e-02  6.548556e-02  1.798463e-01 -1.984653e-02   
-75%    139320.500000  1.315642e+00  8.037239e-01  1.027196e+00  7.433413e-01   
-max    172792.000000  2.454930e+00  2.205773e+01  9.382558e+00  1.687534e+01   
-
-                 V5            V6            V7            V8            V9  \
-count  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05   
-mean   9.604066e-16  1.487313e-15 -5.556467e-16  1.213481e-16 -2.406331e-15   
-std    1.380247e+00  1.332271e+00  1.237094e+00  1.194353e+00  1.098632e+00   
-min   -1.137433e+02 -2.616051e+01 -4.355724e+01 -7.321672e+01 -1.343407e+01   
-25%   -6.915971e-01 -7.682956e-01 -5.540759e-01 -2.086297e-01 -6.430976e-01   
-50%   -5.433583e-02 -2.741871e-01  4.010308e-02  2.235804e-02 -5.142873e-02   
-75%    6.119264e-01  3.985649e-01  5.704361e-01  3.273459e-01  5.971390e-01   
-max    3.480167e+01  7.330163e+01  1.205895e+02  2.000721e+01  1.559499e+01   
-
-       ...           V21           V22           V23           V24  \
-count  ...  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05   
-mean   ...  1.654067e-16 -3.568593e-16  2.578648e-16  4.473266e-15   
-std    ...  7.345240e-01  7.257016e-01  6.244603e-01  6.056471e-01   
-min    ... -3.483038e+01 -1.093314e+01 -4.480774e+01 -2.836627e+00   
-25%    ... -2.283949e-01 -5.423504e-01 -1.618463e-01 -3.545861e-01   
-50%    ... -2.945017e-02  6.781943e-03 -1.119293e-02  4.097606e-02   
-75%    ...  1.863772e-01  5.285536e-01  1.476421e-01  4.395266e-01   
-max    ...  2.720284e+01  1.050309e+01  2.252841e+01  4.584549e+00   
-
-                V25           V26           V27           V28         Amount  \
-count  2.848070e+05  2.848070e+05  2.848070e+05  2.848070e+05  284807.000000   
-mean   5.340915e-16  1.683437e-15 -3.660091e-16 -1.227390e-16      88.349619   
-std    5.212781e-01  4.822270e-01  4.036325e-01  3.300833e-01     250.120109   
-min   -1.029540e+01 -2.604551e+00 -2.256568e+01 -1.543008e+01       0.000000   
-25%   -3.171451e-01 -3.269839e-01 -7.083953e-02 -5.295979e-02       5.600000   
-50%    1.659350e-02 -5.213911e-02  1.342146e-03  1.124383e-02      22.000000   
-75%    3.507156e-01  2.409522e-01  9.104512e-02  7.827995e-02      77.165000   
-max    7.519589e+00  3.517346e+00  3.161220e+01  3.384781e+01   25691.160000   
-
-               Class  
-count  284807.000000  
-mean        0.001727  
-std         0.041527  
-min         0.000000  
-25%         0.000000  
-50%         0.000000  
-75%         0.000000  
-max         1.000000  
-
-[8 rows x 31 columns]
-2025-02-06 21:20:26,824 - INFO - Dataset shapes: {'Fraud Data Shape': (151112, 11), 'Credit Card Data Shape': (284807, 31), 'IP to Country Data Shape': (138846, 3)}
-2025-02-06 21:20:26,824 - INFO - Displaying dataset info.
-2025-02-06 21:20:26,960 - INFO - Fraud Data Info:
-None
-2025-02-06 21:20:26,960 - INFO - Credit Card Data Info:
-None
-2025-02-06 21:20:26,960 - INFO - IP to Country Data Info:
-None
-2025-02-06 21:20:27,076 - INFO - Missing values in Fraud Data: 
-user_id           0
-signup_time       0
-purchase_time     0
-purchase_value    0
-device_id         0
-source            0
-browser           0
-sex               0
-age               0
-ip_address        0
-class             0
-dtype: int64
-2025-02-06 21:20:27,077 - INFO - Missing values in Credit Card Data: 
-Time      0
-V1        0
-V2        0
-V3        0
-V4        0
-V5        0
-V6        0
-V7        0
-V8        0
-V9        0
-V10       0
-V11       0
-V12       0
-V13       0
-V14       0
-V15       0
-V16       0
-V17       0
-V18       0
-V19       0
-V20       0
-V21       0
-V22       0
-V23       0
-V24       0
-V25       0
-V26       0
-V27       0
-V28       0
-Amount    0
-Class     0
-dtype: int64
-2025-02-06 21:20:27,077 - INFO - Missing values in IP to Country Data: 
-lower_bound_ip_address    0
-upper_bound_ip_address    0
-country                   0
-dtype: int64
-2025-02-06 21:20:27,484 - INFO - Fraud Data: Found 0 duplicate rows.
-2025-02-06 21:20:29,222 - INFO - Credit Card Data: Found 1081 duplicate rows.
-2025-02-06 21:20:30,924 - INFO - Credit Card Data: Duplicates removed successfully.
-2025-02-06 21:20:30,980 - INFO - IP to Country Data: Found 0 duplicate rows.
-2025-02-06 21:20:31,000 - INFO - Fraud_Data Class Distribution Count:
-class
-0    136961
-1     14151
-Name: count, dtype: int64
-2025-02-06 21:20:31,001 - INFO - Fraud_Data Class Distribution Percentage:
-class
-0    90.635423
-1     9.364577
-Name: proportion, dtype: float64
-2025-02-06 21:20:31,001 - INFO - CreditCard Class Distribution Count:
-Class
-0    283253
-1       473
-Name: count, dtype: int64
-2025-02-06 21:20:31,001 - INFO - CreditCard Class Distribution Percentage:
-Class
-0    99.83329
-1     0.16671
-Name: proportion, dtype: float64
-2025-02-06 21:20:31,033 - INFO - Data processing completed.
+2025-02-06 22:37:28,908 - INFO - Data processing completed.
+2025-02-06 22:37:28,919 - INFO - Starting exploratory data analysis (EDA).
+2025-02-06 22:37:28,919 - INFO - Plotting distributions for fraud_data.
+2025-02-06 22:37:34,092 - INFO - Successfully plotted fraud_data distributions.
+2025-02-06 22:37:34,092 - INFO - Plotting distributions for creditcard_data.
+2025-02-06 22:37:39,358 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-06 22:37:39,632 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-06 22:37:40,211 - INFO - Successfully plotted creditcard_data distributions.
+2025-02-06 22:37:40,211 - INFO - Plotting relationships in fraud_data.
+2025-02-06 22:37:53,063 - INFO - Successfully plotted fraud_data relationships.
+2025-02-06 22:37:53,063 - INFO - Performing correlation analysis.
+2025-02-06 22:38:03,759 - INFO - Successfully performed correlation analysis.
+2025-02-06 22:38:03,766 - INFO - Mapping IP addresses to countries.
+2025-02-06 22:40:46,559 - INFO - Successfully mapped IP addresses to countries.
+2025-02-06 22:40:46,559 - INFO - Saving processed data to E:\DS+ML\AIM3\Week-8-9\Data\Fraud_Data_Merged.csv.
+2025-02-06 22:40:47,650 - INFO - Data successfully saved to E:\DS+ML\AIM3\Week-8-9\Data\Fraud_Data_Merged.csv.
+2025-02-06 22:40:47,651 - INFO - Exploratory data analysis (EDA) completed.
+2025-02-06 22:40:47,682 - INFO - Starting feature engineering...
+2025-02-06 22:40:48,316 - INFO - Transaction frequency calculated and merged.
+2025-02-06 22:40:48,972 - INFO - Transaction velocity calculated and merged.
+2025-02-06 22:40:49,013 - INFO - Time-based features extracted.
+2025-02-06 22:40:49,034 - INFO - MinMax scaling applied.
+2025-02-06 22:40:49,042 - INFO - Standard scaling applied to 'age'.
+2025-02-06 22:40:49,384 - INFO - Datetime columns converted to timestamps.
+2025-02-06 22:40:49,557 - INFO - One-hot encoding applied.
+2025-02-06 22:40:49,591 - INFO - Label encoding applied to 'sex'.
+2025-02-06 22:40:49,935 - INFO - Boolean columns converted to integers.
+2025-02-06 22:40:56,736 - INFO - Data successfully saved to E:\DS+ML\AIM3\Week-8-9\Data\Future_Eng_fraud_Data.csv.
