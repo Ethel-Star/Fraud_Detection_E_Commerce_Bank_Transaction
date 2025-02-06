@@ -1,0 +1,27 @@
+2025-02-06 22:22:04,829 - INFO - Starting exploratory data analysis (EDA).
+2025-02-06 22:22:04,829 - INFO - Plotting distributions for fraud_data.
+2025-02-06 22:22:09,890 - INFO - Successfully plotted fraud_data distributions.
+2025-02-06 22:22:09,890 - INFO - Plotting distributions for creditcard_data.
+2025-02-06 22:22:15,184 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-06 22:22:15,539 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-06 22:22:16,207 - INFO - Successfully plotted creditcard_data distributions.
+2025-02-06 22:22:16,207 - INFO - Plotting relationships in fraud_data.
+2025-02-06 22:22:29,799 - INFO - Successfully plotted fraud_data relationships.
+2025-02-06 22:22:29,799 - INFO - Performing correlation analysis.
+2025-02-06 22:22:40,899 - INFO - Successfully performed correlation analysis.
+2025-02-06 22:22:40,914 - INFO - Mapping IP addresses to countries.
+2025-02-06 22:25:06,688 - INFO - Successfully mapped IP addresses to countries.
+2025-02-06 22:25:06,689 - INFO - Saving processed data to E:\DS+ML\AIM3\Week-8-9\Data\Fraud_Data_Merged.csv.
+2025-02-06 22:25:07,688 - INFO - Data successfully saved to E:\DS+ML\AIM3\Week-8-9\Data\Fraud_Data_Merged.csv.
+2025-02-06 22:25:07,688 - INFO - Exploratory data analysis (EDA) completed.
+2025-02-06 22:25:07,729 - INFO - Starting feature engineering...
+2025-02-06 22:25:07,953 - INFO - Transaction frequency calculated and merged.
+2025-02-06 22:25:08,525 - INFO - Transaction velocity calculated and merged.
+2025-02-06 22:25:08,570 - INFO - Time-based features extracted.
+2025-02-06 22:25:08,590 - INFO - MinMax scaling applied.
+2025-02-06 22:25:08,599 - INFO - Standard scaling applied to 'age'.
+2025-02-06 22:25:08,829 - INFO - Datetime columns converted to timestamps.
+2025-02-06 22:25:08,994 - INFO - One-hot encoding applied.
+2025-02-06 22:25:09,026 - INFO - Label encoding applied to 'sex'.
+2025-02-06 22:25:09,290 - INFO - Boolean columns converted to integers.
+2025-02-06 22:25:17,420 - INFO - Data successfully saved to E:\DS+ML\AIM3\Week-8-9\Data\Future_Eng_fraud_Data.csv.
