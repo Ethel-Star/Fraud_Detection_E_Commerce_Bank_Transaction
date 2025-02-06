@@ -4,12 +4,14 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, LabelEncoder
 
 # Setup logging
-log_dir = "logs"
-os.makedirs(log_dir, exist_ok=True)
+os.makedirs("logs", exist_ok=True)
+
+# Configure logging
 logging.basicConfig(
-    filename=os.path.join(log_dir, "feature_engineering.log"),
+    filename="logs/feature_engineering.log",
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    filemode="w"  # Overwrites the log file each run; use "a" to append
 )
 
 def feature_engineering(fraud_data, output_future_engineered):
