@@ -1,17 +1,17 @@
-2025-02-06 23:02:29,856 - INFO - Starting data processing...
-2025-02-06 23:02:29,856 - INFO - Displaying dataset shapes...
-2025-02-06 23:02:29,856 - INFO - Fraud Data Shape: (151112, 11)
-2025-02-06 23:02:29,856 - INFO - Credit Card Data Shape: (284807, 31)
-2025-02-06 23:02:29,856 - INFO - IP to Country Data Shape: (138846, 3)
-2025-02-06 23:02:29,856 - INFO - Displaying dataset info...
-2025-02-06 23:02:30,326 - INFO - Fraud Data Info:
-2025-02-06 23:02:30,402 - INFO - None
-2025-02-06 23:02:30,402 - INFO - Credit Card Data Info:
-2025-02-06 23:02:30,446 - INFO - None
-2025-02-06 23:02:30,447 - INFO - IP to Country Data Info:
-2025-02-06 23:02:30,458 - INFO - None
-2025-02-06 23:02:30,458 - INFO - Checking for missing values...
-2025-02-06 23:02:30,573 - INFO - Missing Values in Fraud Data:
+2025-02-06 23:23:00,252 - INFO - Starting data processing...
+2025-02-06 23:23:00,252 - INFO - Displaying dataset shapes...
+2025-02-06 23:23:00,253 - INFO - Fraud Data Shape: (151112, 11)
+2025-02-06 23:23:00,253 - INFO - Credit Card Data Shape: (284807, 31)
+2025-02-06 23:23:00,253 - INFO - IP to Country Data Shape: (138846, 3)
+2025-02-06 23:23:00,253 - INFO - Displaying dataset info...
+2025-02-06 23:23:00,417 - INFO - Fraud Data Info:
+2025-02-06 23:23:00,494 - INFO - None
+2025-02-06 23:23:00,494 - INFO - Credit Card Data Info:
+2025-02-06 23:23:00,542 - INFO - None
+2025-02-06 23:23:00,542 - INFO - IP to Country Data Info:
+2025-02-06 23:23:00,553 - INFO - None
+2025-02-06 23:23:00,553 - INFO - Checking for missing values...
+2025-02-06 23:23:00,668 - INFO - Missing Values in Fraud Data:
 user_id           0
 signup_time       0
 purchase_time     0
@@ -24,7 +24,7 @@ age               0
 ip_address        0
 class             0
 dtype: int64
-2025-02-06 23:02:30,574 - INFO - Missing Values in Credit Card Data:
+2025-02-06 23:23:00,668 - INFO - Missing Values in Credit Card Data:
 Time      0
 V1        0
 V2        0
@@ -57,63 +57,37 @@ V28       0
 Amount    0
 Class     0
 dtype: int64
-2025-02-06 23:02:30,574 - INFO - Missing Values in IP to Country Data:
+2025-02-06 23:23:00,669 - INFO - Missing Values in IP to Country Data:
 lower_bound_ip_address    0
 upper_bound_ip_address    0
 country                   0
 dtype: int64
-2025-02-06 23:02:31,125 - INFO - Checking for duplicates in Fraud Data...
-2025-02-06 23:02:31,126 - INFO - No duplicates found in Fraud Data.
-2025-02-06 23:02:32,825 - INFO - Checking for duplicates in Credit Card Data...
-2025-02-06 23:02:34,844 - INFO - Found 1081 duplicates in Credit Card Data. Removing them.
-2025-02-06 23:02:34,902 - INFO - Checking for duplicates in IP to Country Data...
-2025-02-06 23:02:34,902 - INFO - No duplicates found in IP to Country Data.
-2025-02-06 23:02:34,910 - INFO - Plotting target class distribution...
-2025-02-06 23:02:34,927 - INFO - Fraud_Data Class Distribution Count:
+2025-02-06 23:23:00,972 - INFO - Checking for duplicates in Fraud Data...
+2025-02-06 23:23:00,972 - INFO - No duplicates found in Fraud Data.
+2025-02-06 23:23:02,833 - INFO - Checking for duplicates in Credit Card Data...
+2025-02-06 23:23:04,624 - INFO - Found 1081 duplicates in Credit Card Data. Removing them.
+2025-02-06 23:23:04,680 - INFO - Checking for duplicates in IP to Country Data...
+2025-02-06 23:23:04,680 - INFO - No duplicates found in IP to Country Data.
+2025-02-06 23:23:04,687 - INFO - Plotting target class distribution...
+2025-02-06 23:23:04,705 - INFO - Fraud_Data Class Distribution Count:
 class
 0    136961
 1     14151
 Name: count, dtype: int64
-2025-02-06 23:02:34,928 - INFO - Fraud_Data Class Distribution Percentage:
+2025-02-06 23:23:04,705 - INFO - Fraud_Data Class Distribution Percentage:
 class
 0    90.635423
 1     9.364577
 Name: proportion, dtype: float64
-2025-02-06 23:02:34,928 - INFO - CreditCard Class Distribution Count:
+2025-02-06 23:23:04,705 - INFO - CreditCard Class Distribution Count:
 Class
 0    284315
 1       492
 Name: count, dtype: int64
-2025-02-06 23:02:34,928 - INFO - CreditCard Class Distribution Percentage:
+2025-02-06 23:23:04,706 - INFO - CreditCard Class Distribution Percentage:
 Class
 0    99.827251
 1     0.172749
 Name: proportion, dtype: float64
-2025-02-06 23:02:40,024 - INFO - Data processing completed.
-2025-02-06 23:02:40,035 - INFO - Starting exploratory data analysis (EDA).
-2025-02-06 23:02:40,035 - INFO - Plotting distributions for fraud_data.
-2025-02-06 23:02:48,066 - INFO - Successfully plotted fraud_data distributions.
-2025-02-06 23:02:48,066 - INFO - Plotting distributions for creditcard_data.
-2025-02-06 23:02:53,219 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2025-02-06 23:02:53,554 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2025-02-06 23:02:54,182 - INFO - Successfully plotted creditcard_data distributions.
-2025-02-06 23:02:54,182 - INFO - Plotting relationships in fraud_data.
-2025-02-06 23:03:09,207 - INFO - Successfully plotted fraud_data relationships.
-2025-02-06 23:03:09,207 - INFO - Performing correlation analysis.
-2025-02-06 23:03:21,751 - INFO - Successfully performed correlation analysis.
-2025-02-06 23:03:21,762 - INFO - Mapping IP addresses to countries.
-2025-02-06 23:05:49,654 - INFO - Successfully mapped IP addresses to countries.
-2025-02-06 23:05:49,655 - INFO - Saving processed data to E:\DS+ML\AIM3\Week-8-9\Data\Fraud_Data_Merged.csv.
-2025-02-06 23:05:50,701 - INFO - Data successfully saved to E:\DS+ML\AIM3\Week-8-9\Data\Fraud_Data_Merged.csv.
-2025-02-06 23:05:50,701 - INFO - Exploratory data analysis (EDA) completed.
-2025-02-06 23:05:50,737 - INFO - Starting feature engineering...
-2025-02-06 23:05:51,322 - INFO - Transaction frequency calculated and merged.
-2025-02-06 23:05:52,101 - INFO - Transaction velocity calculated and merged.
-2025-02-06 23:05:52,141 - INFO - Time-based features extracted.
-2025-02-06 23:05:52,159 - INFO - MinMax scaling applied.
-2025-02-06 23:05:52,168 - INFO - Standard scaling applied to 'age'.
-2025-02-06 23:05:52,500 - INFO - Datetime columns converted to timestamps.
-2025-02-06 23:05:52,711 - INFO - One-hot encoding applied.
-2025-02-06 23:05:52,744 - INFO - Label encoding applied to 'sex'.
-2025-02-06 23:05:53,092 - INFO - Boolean columns converted to integers.
-2025-02-06 23:06:00,238 - INFO - Data successfully saved to E:\DS+ML\AIM3\Week-8-9\Data\Future_Eng_fraud_Data.csv.
+2025-02-06 23:23:07,017 - INFO - 2D plot saved as plots\target_class_distribution_plot.png
+2025-02-06 23:23:07,509 - INFO - Data processing completed.
