@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Create logs directory if it doesn't exist
 os.makedirs("logs", exist_ok=True)
 
 # Configure logging
