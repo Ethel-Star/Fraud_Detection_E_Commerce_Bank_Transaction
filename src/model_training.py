@@ -18,7 +18,7 @@ from tensorflow.keras.layers import SimpleRNN, LSTM, Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
-
+from tensorflow.keras.layers import SimpleRNN, LSTM, Dense, Dropout, Input
 
 def train_logistic_regression(X_train, y_train, X_test, y_test):
     """
@@ -85,12 +85,11 @@ def train_mlp(X_train, y_train, X_test, y_test):
     print(classification_report(y_test, y_pred))
     print("ROC-AUC Score:", roc_auc_score(y_test, y_pred))
     return model
-
 def train_rnn(X_train, y_train, X_test, y_test):
     """
     Train and evaluate an RNN model.
     """
-   # Handle class imbalance using SMOTE (Apply on 2D data)
+    # Handle class imbalance using SMOTE (Apply on 2D data)
     smote = SMOTE(random_state=42)
     X_train_sm, y_train_sm = smote.fit_resample(X_train.reshape(X_train.shape[0], -1), y_train)
 
@@ -99,14 +98,18 @@ def train_rnn(X_train, y_train, X_test, y_test):
     print("X_test shape before reshaping:", X_test.shape)
 
     # Reshape data AFTER SMOTE
-    X_train_rnn = X_train_sm.reshape((X_train_sm.shape[0], 1, -1))  # Fixed
-    X_test_rnn = X_test.reshape((X_test.shape[0], 1, -1))  # Fixed
+    X_train_rnn = X_train_sm.reshape((X_train_sm.shape[0], 1, X_train_sm.shape[1]))  # Fixed
+    X_test_rnn = X_test.reshape((X_test.shape[0], 1, X_test.shape[2]))  # Fixed
 
     # Initialize the RNN model
-    model = Sequential()
-    model.add(SimpleRNN(64, activation='relu', return_sequences=True, input_shape=(1, X_train_sm.shape[1])))
-    model.add(SimpleRNN(32, activation='relu'))
-    model.add(Dense(1, activation='sigmoid'))
+    model = Sequential([
+        Input(shape=(1, X_train_sm.shape[1])),  # Explicit Input layer
+        SimpleRNN(64, activation='relu', return_sequences=True),
+        SimpleRNN(32, activation='relu', return_sequences=False),  # Final RNN layer: return_sequences=False
+        Dense(1, activation='sigmoid')
+    ])
+
+    # **Fix: Compile the model before training**
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     # Train the model
@@ -124,28 +127,28 @@ def train_lstm(X_train, y_train, X_test, y_test):
     """
     Train and evaluate an LSTM model.
     """
-
-
-    # Debug: Print shapes before SMOTE
-    print("X_train shape before SMOTE:", X_train.shape)
-    print("X_test shape before reshaping:", X_test.shape)
-
-    # Handle class imbalance using SMOTE
+    # Handle class imbalance using SMOTE (Apply on 2D data)
     smote = SMOTE(random_state=42)
     X_train_sm, y_train_sm = smote.fit_resample(X_train.reshape(X_train.shape[0], -1), y_train)
 
-    # Debug: Print shapes after SMOTE
+    # Debugging step
+    print("X_train shape before SMOTE:", X_train.shape)
     print("X_train_sm shape after SMOTE:", X_train_sm.shape)
+    print("X_test shape before reshaping:", X_test.shape)
 
-    # Reshape Data
-    X_train_lstm = X_train_sm.reshape((X_train_sm.shape[0], 1, -1))  # Fixed
-    X_test_lstm = X_test.reshape((X_test.shape[0], 1, -1))  # Fixed
+    # Reshape data AFTER SMOTE
+    X_train_lstm = X_train_sm.reshape((X_train_sm.shape[0], 1, X_train_sm.shape[1]))  # Fixed
+    X_test_lstm = X_test.reshape((X_test.shape[0], 1, X_test.shape[2]))  # Fixed
 
-    # Initialize LSTM model
-    model = Sequential()
-    model.add(LSTM(64, activation='relu', return_sequences=True, input_shape=(1, X_train_sm.shape[1])))
-    model.add(LSTM(32, activation='relu'))
-    model.add(Dense(1, activation='sigmoid'))
+    # Initialize the LSTM model
+    model = Sequential([
+        Input(shape=(1, X_train_sm.shape[1])),  # Explicit Input layer
+        LSTM(64, activation='relu', return_sequences=True),
+        LSTM(32, activation='relu', return_sequences=False),  # Final LSTM layer
+        Dense(1, activation='sigmoid')
+    ])
+
+    # **Fix: Compile the model before training**
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     # Train the model
